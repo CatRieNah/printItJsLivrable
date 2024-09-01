@@ -23,7 +23,8 @@ arrowLeft.addEventListener("click", function(){
 })
 const arrowRight= document.querySelector(".arrow_right")
 arrowRight.addEventListener("click", ()=>{
-	console.log("flèche droite cliquée")
+	//console.log("flèche droite cliquée")
+	clickArrowRight()
 })
 
 //Ajout bullet points 
@@ -31,9 +32,28 @@ const parentDots = document.querySelector(".dots")
 for(let i= 0; i < slides.length; i++){
 	const dotElement = document.createElement("span")
 	dotElement.classList.add("dot")
-	console.log(dotElement)
 	if (i===0){
 		dotElement.classList.add("dot_selected")
 	}
 parentDots.appendChild(dotElement)
+}
+
+//Modification de slide au clic
+// recupération de tous les points
+const dotElementAll = document.querySelectorAll(".dot")
+let i=0
+const bannerImg = document.querySelector(".banner-img")
+const bannerTxt =document.querySelector("#banner p")
+function clickArrowRight (){
+	//Changement de point au suivant
+	dotElementAll[i].classList.remove("dot_selected")
+	i++
+	if(i >= dotElementAll.length){
+		i=0
+	}
+	dotElementAll[i].classList.add("dot_selected")
+	//changement de l'image 
+	bannerImg.src = `./assets/images/slideshow/${slides[i].image}`
+	//changement de texte
+	bannerTxt.innerHTML = `${slides[i].tagLine}`
 }
