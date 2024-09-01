@@ -25,3 +25,15 @@ const arrowRight= document.querySelector(".arrow_right")
 arrowRight.addEventListener("click", ()=>{
 	console.log("flèche droite cliquée")
 })
+
+//Ajout bullet points 
+const parentDots = document.querySelector(".dots")
+for(let i= 0; i < slides.length; i++){
+	const dotElement = document.createElement("span")
+	dotElement.classList.add("dot")
+	console.log(dotElement)
+	if (i===0){
+		dotElement.classList.add("dot_selected")
+	}
+parentDots.appendChild(dotElement)
+}
