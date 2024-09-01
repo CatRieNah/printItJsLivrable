@@ -19,7 +19,8 @@ const slides = [
 //addeventlistener
 const arrowLeft = document.querySelector(".arrow_left")
 arrowLeft.addEventListener("click", function(){
-	console.log("flèche gauche cliquée")
+	//console.log("flèche gauche cliquée")
+	clickArrowleft()
 })
 const arrowRight= document.querySelector(".arrow_right")
 arrowRight.addEventListener("click", ()=>{
@@ -50,6 +51,19 @@ function clickArrowRight (){
 	i++
 	if(i >= dotElementAll.length){
 		i=0
+	}
+	dotElementAll[i].classList.add("dot_selected")
+	//changement de l'image 
+	bannerImg.src = `./assets/images/slideshow/${slides[i].image}`
+	//changement de texte
+	bannerTxt.innerHTML = `${slides[i].tagLine}`
+}
+function clickArrowleft (){
+	//Changement de point au suivant
+	dotElementAll[i].classList.remove("dot_selected")
+	i--
+	if(i < 0){
+		i = dotElementAll.length-1
 	}
 	dotElementAll[i].classList.add("dot_selected")
 	//changement de l'image 
